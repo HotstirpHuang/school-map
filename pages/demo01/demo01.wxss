@@ -1,0 +1,78 @@
+/* pages/demo01/demo01.wxss */
+.search-framework{
+  border: 1rpx solid #4682B4;
+  width: 700rpx;
+  height: 80rpx;
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-image{
+  width: 40rpx;
+  height:40rpx;
+  margin-right: 12rpx;
+}
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.input{
+  color: #b6b6b6;
+  border: none;
+  border-radius: 10rpx;
+  width: 60vw;
+  height: 6vh;
+  text-indent:10rpx;
+  margin-left: 10rpx;
+}
+.line{
+  width: 3rpx;
+  height: 50rpx;
+  background-color: #b6b6b6;
+}
+.search-text{
+  color: #4682B4;
+  width: 80rpx;
+  height: 30rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+  margin-left: 30rpx;
+}
+.index_mark{
+  margin-top: 10rpx;
+  height: 140rpx;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+}
+
+.mark_element{
+  flex-direction: column;
+  width: 25%;
+}
+
+.mark_element_icon{
+  width: 40%;
+  height: 80rpx;
+  margin-left: 30%;
+}
+
+.mark_element_text{
+  display: flex;
+  justify-content: center;
+  font-size: 30rpx;
+}
+.popup{
+  width: 100%;
+}
+.marker-button{
+   border: 1rpx solid #161816;
+   font-size: 30rpx;
+   margin-top: 100rpx;
+ }
