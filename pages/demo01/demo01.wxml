@@ -5,7 +5,9 @@
         class="search-image"></image>
         <input class="input" placeholder="输入搜索地址" placeholder-style="color:#B0C4DE;" bindinput="inputplace" />
         <view class="line"></view>
-        <view class="search-text" bindtap="search_place">搜索</view>
+        <view class="marker-searcher" bindtap="search_marker">
+            <button class="search-text" bindtap="search_place" style="position: relative; left: 7rpx; top: 9rpx; width: 178rpx; height: 82rpx; display: block; box-sizing: border-box">搜索</button>
+        </view>
     </view>
 </view>
 <view class="index_mark">
