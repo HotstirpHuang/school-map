@@ -1,9 +1,9 @@
 <!--pages/demo01/demo01.wxml-->
 <view class="search-framework">
     <view class="search">
-        <image src="https://pic.imgdb.cn/item/6289d20e0947543129e41f21.png"
+        <image src="https://mmbiz.qpic.cn/mmbiz_png/JZxArCU6LRribpVmzlUNGvYVU4jojoICBY1u3ic8lBGbs3sC86DgZy2wwicU5yMtUiagyicNcibu2mP8ibaVyBEysUy5A/0?wx_fmt=png"
         class="search-image"></image>
-        <input class="input" placeholder="输入搜索地址" placeholder-style="color:#B0C4DE;" bindtap="inputpalce" />
+        <input class="input" placeholder="输入搜索地址" placeholder-style="color:#B0C4DE;" bindinput="inputplace" />
         <view class="line"></view>
         <view class="search-text" bindtap="search_place">搜索</view>
     </view>
@@ -31,7 +31,6 @@
         <view class="mark_element_text">宿舍寝室</view>
     </view>
 </view>
-
 <map 
 id="myMap"
 style="width:100%;height:850rpx"
@@ -51,12 +50,34 @@ longitude="116.288838"
 layer-style="2"
 >
 </map>
-
+<cover-view class="coverview">
+    <button class="schedule" style="width:40px" bindtap="checkschedule">日程表</button>
+</cover-view>
 <modal class="popup" hidden="{{hidden}}" confirm-text="前往此处" cancel-text="取消" bindconfirm="popconfirm" bindcancel="popcancel" title="{{markername}}" style="width:80%">
   <view class="marker-img">
     <image style="width:565rpx;height:300rpx" src="{{markerimg}}"></image>
   </view>
   <button class="marker-button" bindtap="showdetail" style="width: 50%;height:80rpx;">楼内导航</button>
+  <button class="marker-button" bindtap="addschedule" style="width: 50%;height:80rpx;">添加到日程</button>
 </modal>
+<modal class="popup" hidden="{{addhidden}}" confirm-text="确认添加" cancel-text="取消" bindconfirm="addconfirm" bindcancel="addcancel" title="添加{{markername}}到日程表" style="width:80%">
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 100px;" value="{{value}}" bindchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{hour}}" style="line-height: 50px">{{item}}时</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{minute}}" style="line-height: 50px">{{item}}分</view>
+    </picker-view-column>
+  </picker-view>
+</modal>
+<modal class="popup" hidden="{{checkhidden}}" confirm-text="删除此项" cancel-text="关闭" bindconfirm="checkconfirm" bindcancel="checkcancel" title="日程表" style="width:80%">
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 100px;"  bindchange="checkchange">
+    <picker-view-column>
+      <view wx:for="{{schedule}}" wx:key="id" style="line-height: 50px">{{index+1}}.{{item.name}}:{{item.hour}}时{{item.minute}}分</view>
+    </picker-view-column>
+</picker-view>
+  <button class="marker-button" bindtap="clearall" style="width: 50%;height:80rpx;">清空日程表</button>
+</modal>
+
 
 
