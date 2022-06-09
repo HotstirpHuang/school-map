@@ -46,6 +46,11 @@ Page({
         currentdatabase:null,
         markername:null,
         markerimg:null,
+        duration: 300,
+        position: 'right',
+        overlay: true,
+        customStyle: '',
+        show: false
       },
       onShow:function(){
         var that=this
@@ -196,12 +201,14 @@ Page({
         var eat = that.data.buildData[1].data;
         var live = that.data.buildData[2].data;
         var ador = that.data.buildData[3].data;
+        var placedata=[];
         var date=new Date;
         that.setData({
             studydata:study,
             eatdata:eat,
             livedata:live,
             dordata:ador,
+            placedata:[study,eat,live,ador],
             value:[date.getHours(),date.getMinutes()],
             setminute:date.getMinutes(),
             sethour:date.getHours()
@@ -609,11 +616,15 @@ Page({
             console.log(res);
           }
       });
-     }
-
+     },
+     showdetail:function(){
+      wx.navigateTo({
+        url: '../library/library',
+      })
+     },
 
      
-});
+})
 
 
     

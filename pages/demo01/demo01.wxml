@@ -6,7 +6,7 @@
         <input class="input" placeholder="输入搜索地址" placeholder-style="color:#B0C4DE;" bindinput="inputplace" />
         <view class="line"></view>
         <view class="marker-searcher" bindtap="search_marker">
-            <button class="search-text" bindtap="search_place" style="position: relative; left: 7rpx; top: 9rpx; width: 178rpx; height: 82rpx; display: block; box-sizing: border-box">搜索</button>
+        <button class="search-text" bindtap="search_place" style="width: 184rpx; height: 80rpx; display: block; box-sizing: border-box; left: 5rpx; top: 11rpx; position: relative">搜索</button>
         </view>
     </view>
 </view>
@@ -42,7 +42,7 @@ scale="16.5"
 show-compass="true"
 enable-rotate="true"
 enable-building="true"
-enable-poi="{{setting}}"
+enable-poi="{{true}}"
 rotate="20"
 bindmarkertap="onPointTap"
 bindlabeltap="onPointTap"
@@ -59,7 +59,7 @@ layer-style="2"
   <view class="marker-img">
     <image style="width:565rpx;height:300rpx" src="{{markerimg}}"></image>
   </view>
-  <button class="marker-button" bindtap="showdetail" style="width: 50%;height:80rpx;">楼内导航</button>
+  <button class="marker-button" bindtap="showdetail" data-position="center" style="width: 50%;height:80rpx;">楼内导航</button>
   <button class="marker-button" bindtap="addschedule" style="width: 50%;height:80rpx;">添加到日程</button>
 </modal>
 <modal class="popup" hidden="{{addhidden}}" confirm-text="确认添加" cancel-text="取消" bindconfirm="addconfirm" bindcancel="addcancel" title="添加{{markername}}到日程表" style="width:80%">
@@ -81,5 +81,25 @@ layer-style="2"
   <button class="marker-button" bindtap="clearall" style="width: 50%;height:80rpx;">清空日程表</button>
 </modal>
 
-
+<page-container 
+  show="{{show}}"
+  round="{{round}}"
+  overlay="{{overlay}}"
+  duration="{{duration}}"
+  position="{{position}}"
+  close-on-slide-down="{{false}}"
+  bindbeforeenter="onBeforeEnter"
+  bindenter="onEnter"
+  bindafterenter="onAfterEnter"
+  bindbeforeleave="onBeforeLeave"
+  bindleave="onLeave"
+  bindafterleave="onAfterLeave"
+  bindclickoverlay="onClickOverlay"
+  custom-style="{{customStyle}}"
+  overlay-style="{{overlayStyle}}"
+>
+  <view class="detail-page">
+    <button type="primary" bindtap="exit">退出</button>
+  </view>
+</page-container>
 

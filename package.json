@@ -1,0 +1,22 @@
+{
+  "name": "school-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HotstirpHuang/school-map.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HotstirpHuang/school-map/issues"
+  },
+  "homepage": "https://github.com/HotstirpHuang/school-map#readme",
+  "dependencies": {
+    "weui-miniprogram": "^1.2.3"
+  }
+}

@@ -1,0 +1,134 @@
+/* pages/library/library.wxss */
+/**answer.wxss**/
+
+.answer-feed {
+  padding: 0;
+  font-size: 14rpx;
+  background: #F0F4F3;
+  color: #000;
+}
+.weui-article__section{
+  display: flexbox;
+  border:5rpx solid #CDF0EA;
+}
+.weui-article__section .weui-article__section{
+  display: flexbox;
+  border: 3rpx solid #CBF1F5;
+  border-bottom: 0;
+}
+.question-wrp{
+  padding-top:0;
+  border-radius: 15px;
+  box-shadow: 0 1px 2px #bebebe;
+}
+.question-item{
+  width: 710rpx;
+  padding: 40rpx 20rpx 10rpx;
+  background: #fff;
+}
+.question-item .que-tag{
+}
+.question-item .que-tag .tag{
+  height: 28rpx;
+  padding: 15rpx 20rpx;
+  border-radius: 28rpx;
+  margin: 0 10rpx;
+  background: #EEF5F8;
+  color: #2186E0;
+  font-size: 28rpx;
+  vertical-align: middle;
+}
+.question-item .weui-article__h1{
+  padding: 40rpx 20rpx 30rpx;
+  text-align: center;
+  font-size: 50rpx;
+
+}
+.question-item .weui-article__h3{
+  padding: 0 0 30rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+}
+.weui-article .weui-article__h3{
+  text-align: center;
+  padding-bottom:20rpx ;
+  font-size: 35rpx;
+}
+.question-item .que-follow{
+  margin: 20rpx;
+  height: 68rpx;
+}
+.question-item .que-follow view{
+  display: inline-block;
+  margin: 0 40rpx 0 0;
+}
+
+.question-item .que-follow image{
+  width: 50rpx;
+  height: 50rpx;
+  margin: 0 10rpx 0 0;
+  vertical-align: middle;
+}
+.question-item .que-follow .left{
+  float: left;
+  padding: 10rpx 0;
+}
+.question-item .que-follow .left text{
+  color: #AFAFAF;
+  height: 50rpx;
+  vertical-align: middle;
+  padding: 18rpx 0;
+  font-size: 24rpx;
+}
+.question-item .que-follow .right{
+  float: right;
+  padding: 20rpx 55rpx;
+  color: #ffffff;
+  background: #52C980;
+  border-radius: 3px;
+  font-size: 26rpx;
+  margin: 0;
+}
+.que-operate{
+  width: 750rpx;
+  border-top: solid 1px #ebebeb;
+  border-bottom: solid 1px #ebebeb;
+  color: #889091;
+  vertical-align: middle;
+  background: #ffffff;
+}
+.que-operate .invite{
+  border-right: solid 2px #ebebeb;
+}
+.que-operate image{
+  display:flexbox;
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
+  margin: 0 20rpx 0 0;
+}
+.weui-article__img{
+  width: 750rpx;
+}
+.answer-feed .feed-item .feed-content .answer-body{
+  padding: 0;
+  /*height: 10rpx;*/
+  font-size: 24rpx;
+  line-height: 28rpx;
+  color: #5b5b5b;
+}
+
+.weui-article__p{
+  margin:auto;
+  flex-direction: column;
+  margin-left: 30rpx;
+  line-height: 45rpx;
+  color:#666
+}
+
+.container{
+  border-top: 1rpx;
+  width: 750rpx;
+
+}
+.page{background-color:var(--weui-BG-2)}image{margin:4px 0}
