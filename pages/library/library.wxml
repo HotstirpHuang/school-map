@@ -1,208 +1,105 @@
 <!--pages/library/library.wxml-->
-
-<view class="container">
+<page-meta root-font-size="system"></page-meta>
+<view class="container" style="width: 750rpx; height: 848rpx; display: flex; box-sizing: border-box">
     <view class="question-wrp">
         <image src="https://zsb.bupt.edu.cn/images/n_banner.jpg" width="355" height="155" style="width: 746rpx; height: 192rpx; display: inline-block; box-sizing: border-box"></image>
         <view class="question-item">
-            <view class="que-title">
-                北邮沙河图书馆
-            </view>
-            
             <view class="que-tag">
-                <text class="tag">网红经典</text>
+                <text class="tag">网红景点</text>
                 <text class="tag">学习圣地</text>
                 <text class="tag">北邮牌面</text>
             </view>
-            <view class="image">
-
-    </view>
-            <view class="que-content">
+            <view aria-role="heading" aria-level="4" class="weui-article__h1">
+                北邮沙河图书馆
+            </view>
+        <view class="weui-article__h3">
                 你见过早上七点图书馆前等待开馆的队伍吗？
-            </view>
-            <view class="que-follow">
-                <view class="right">
+        </view>
+        <view class="que-follow" style="width: 669rpx; height: 68rpx; display: block; box-sizing: border-box">
+             <view class="right">
                     关注
-                </view>
             </view>
         </view>
-    </view>
-    <view class="answer-feed">
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
+     </view>
+</view>
+</view>
+<view class="page" data-weui-theme="{{theme}}" data-weui-mode="{{mode}}">
+  <view class="weui-article">
+      <view class="weui-article__section">
+          <view class="weui-article__section">
+              <view class="weui-article__section">
+                <view class="weui-cells">
+			<view aria-labelledby="js_cell_l1_bd js_cell_l1_tips" aria-describedby="js_cell_l1_note" class="weui-cell weui-cell_active weui-cell_access" aria-role="link">
+				<view aria-hidden="true" class="weui-cell__bd" id="js_cell_l1_bd">图书馆设计理念</view>
+				<view aria-hidden="true" class="weui-cell__ft" id="js_cell_l1_bd" style="font-size: 0;">
+					<text class="demo_badge_tips" id="js_cell_l1_tips">详细信息</text>
+					<text id="js_cell_l1_note" aria-label="，有更新" class="weui-badge weui-badge_dot"></text>
+				</view>
+			</view>
+		</view>
+                <view class="weui-article__p">
+                北邮沙河校区图书馆建筑总面积为3.67万平方米，图书馆平面布局呈C型。在建筑东南角围合形成一个较大的室外庭院，现状树阵穿过庭院，使庭院成为学生课余学习交流的良好场所。一条贯穿东西的内街穿过建筑，连接起宿舍区、食堂和学生活动中心以及东面的教学建筑。东侧开口处设置空中连廊，保持南北两翼的连通。图书馆礼仪入口设在南部，沿弧形大楼梯盘桓而上至二层。在内街庭院的南北两侧分别设置南、北两翼的首层主入口，满足不同功能区的需要。
                 </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
+                <view class="weui-article_p">
+                    <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/9/57/5C/8DC4FBC8A4E6F22DB970126B145_1E545999_19637.jpg?e=.jpg" mode="aspectFit" style="height: 180px;" />
                 </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
+                <view class="weui-article__p">
+                    图书馆外围是四方形，主体是圆柱形，上圆下方，方圆相嵌，寓意天圆地方。建筑造型整体体现优美、典雅、厚重的气质。3/4圆主体造型的外围曲面采用玻璃幕墙和白色的竖向遮阳格栅的立面，节能的同时也使室内增加了深邃的光影效果。
                 </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
+              </view>
+          </view>
+          <view class="weui-article__section">
+            <view class="weui-article__p">
+                    <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/8/2C/CC/6683F0BE1CA2423667DA929880F_7292A38C_EC96.jpg?e=.jpg" mode="aspectFit" style="height: 327rpx; width: 635rpx; display: inline-block; box-sizing: border-box" />
+                    <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/C/FC/EC/9C1AB7AAF51F007491C20467E23_11A29822_12DF7.jpg?e=.jpg" mode="widthFix" style="height: 327rpx; width: 635rpx; display: inline-block; box-sizing: border-box" />
                 </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
-
-                    </view>
+                <view class="weui-article__p">
+                    采用透明玻璃来做墙壁，增加了整栋大楼的透光性。因为玻璃反光的特性，远远望去，图书馆就会在阳光或月色下熠熠生辉，分外耀眼。在近处观看，整栋楼会泛着温润的光芒，给人一种沉稳又高级的感觉。
                 </view>
-            </view>
-        </view>
-        <view  bindtap="bindItemTap" class="feed-item">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <image src="../../images/icon1.jpeg"></image>
-                    </view>
-                    <text>Rebecca</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>3.9K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>254 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>2 个月前</a>
-                        </view>
+          </view>
+          <view class="weui-article__section">
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/5/02/72/562B01B302E1FB0CAFC53EC4F52_2B6A8C30_1E165.jpg?e=.jpg" mode="scaleToFill" style="height: 327rpx; width: 680rpx; display: inline-block; box-sizing: border-box" />
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/2/3F/EF/C3FCE1D353E8B28EABFB2242D26_ADC7841B_2B88C.jpeg?e=.jpeg" mode="scaleToFill" style="height: 327rpx; width: 680rpx; display: inline-block; box-sizing: border-box" />
+            <view class="weui-article__p">在图书馆的设计中，自始至终都在两个方面平衡和取舍，一个是经典性，一个是多元性。在大的形体上，借用了超验的、经典的方和圆，但又有意地通过保留内街和树木破解完整的几何形。方和圆两种秩序向内延伸和充实，两种空间在内部交融、此消彼长，既有入口大厅经典恢弘的气势，也有倚墙而设的具有个性的阅览空间，错落有致的交流平台、活动场所分布在不同的高度和角落，经典的形体内容纳着具有丰富体验的内部空间。</view>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/C/89/55/72181375DD12C0ACBAD4FE44E8B_D6268100_133B7.jpg?e=.jpg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+          </view>
+          <view class="weui-article__section">
+            <view class="weui-cells">
+			<view aria-labelledby="js_cell_l1_bd js_cell_l1_tips" aria-describedby="js_cell_l1_note" class="weui-cell weui-cell_active weui-cell_access" aria-role="link">
+				<view aria-hidden="true" class="weui-cell__bd" id="js_cell_l1_bd">图书馆馆藏资源</view>
+				<view aria-hidden="true" class="weui-cell__ft" id="js_cell_l1_bd" style="font-size: 0;">
+					<text class="demo_badge_tips" id="js_cell_l1_tips">详细信息</text>
+					<text id="js_cell_l1_note" aria-label="，有更新" class="weui-badge weui-badge_dot"></text>
+				</view>
+			</view>
+		</view>
+            <view class="weui-article__p">北京邮电大学图书馆总馆藏图书417万余册，其中馆藏纸质资源194万余册，馆藏电子资源（折合）223万余册，图书馆在引进158个中外文数据库的基础上，还自建了“北京邮电大学机构知识库”、“邮电史资料库”、“邮电通信专题资料库”等16个特色数据库，与80家图书情报机构实现馆际互借和资源共享，位居全国图书馆前列。图书馆共有五层，一层为自习区；二至四层为图书区，设有新书区、休息区、研讨室等区域。二楼入口处设有门禁，也需要刷一卡通进入。二层为自然科学文献借阅区；三层为社会科学文献借阅区；四层为样本图书阅览区；五层为文化创意创新展示区。</view>
+          </view>
+          <view class="weui-article__section">
+            <view class="weui-cells">
+			<view aria-labelledby="js_cell_l1_bd js_cell_l1_tips" aria-describedby="js_cell_l1_note" class="weui-cell weui-cell_active weui-cell_access" aria-role="link">
+				<view aria-hidden="true" class="weui-cell__bd" id="js_cell_l1_bd">图书馆内部设施</view>
+				<view aria-hidden="true" class="weui-cell__ft" id="js_cell_l1_bd" style="font-size: 0;">
+					<text class="demo_badge_tips" id="js_cell_l1_tips">详细信息</text>
+					<text id="js_cell_l1_note" aria-label="，有更新" class="weui-badge weui-badge_dot"></text>
+				</view>
+			</view>
+		</view>
+            <view class="weui-article__p">图书馆不仅馆藏丰富，特色鲜明，设计集科技气息和人文气息于一体，智慧查询机、借还书机、研讨间等应有尽有。。</view>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/D/E2/76/365D7C0FC383CCE58E4B775F4AA_7E7C4466_6DC1.jpeg?e=.jpeg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/B/07/E5/B03021C51B0E5AE0F0EB81527E4_BEAD2976_2CC0E.jpeg?e=.jpeg" style="width: 683rpx; height: 705rpx; display: inline-block; box-sizing: border-box"></image>
+            <view class="weui-article__p"> 多功能桌面自习桌集成了电源插孔和USB接口，手机平板充电不再发愁，集成护眼灯光线均匀柔和不伤眼，半透明玻璃减少相互影响~</view>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/5/8F/92/DEAA7F2D3E71F18BBBDFB66D3B3_FA2D4BBF_1AEFF.jpeg?e=.jpeg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/F/38/B7/83500C5AAF86BB5B0AAAE86FD95_52089CBF_13DAC.jpeg?e=.jpeg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+            <view class="weui-article__p">除此之外，学校对于图书馆的内部更是进行了精心的布置，每一层都会提供给学生不同的座椅，使学生可以根据自己的需要选择合适的座椅。图书馆内部整体色调为木黄色，让每一名学子都可以在沉稳舒适的环境中徜徉于学海之中。</view>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/3/95/6B/9FA2481A38CE067C8A58CE7734B_EB6C0C6F_53E6C.jpg?e=.jpg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/6/2E/56/910A6AB0CB4B788C681A2BAF84F_48924337_2412D.jpeg?e=.jpeg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/3/16/39/19E008D54EF1CDA58241A38C729_0817FD33_5F2DD.jpg?e=.jpg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/2/CF/B3/3322A1004F1E5B9CACE08EF950A_F54BAACC_74196.jpg?e=.jpg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+            <image class="weui-article__img" src="https://zsb.bupt.edu.cn/__local/E/47/FC/3ECDBAEC55400A2DE4A83C0F2BF_5A628B72_60B2E.jpg?e=.jpg" style="width: 680rpx; height: 354rpx; display: inline-block; box-sizing: border-box"></image>
+          </view>
 
-                    </view>
-                </view>
-            </view>
-        </view>
+      </view>
 
-
-
-    </view>
+  </view>
 </view>

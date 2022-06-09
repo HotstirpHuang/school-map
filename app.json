@@ -1,10 +1,11 @@
 {
     "pages": [
-        "pages/library/library",
+
         "pages/demo01/demo01",
         "pages/index/index",
+        "pages/library/library",
         "pages/logs/logs"
-
+       
     ],
     "window": {
         "backgroundTextStyle": "light",
