@@ -30,7 +30,7 @@
   padding-left: 0px;
   width: 40px;
   position: absolute;
-  top: 120px;
+  top: 22%;
   left: 0px;
 }
 .input{
@@ -85,7 +85,7 @@
 .marker-button{
    border: 1rpx solid #161816;
    font-size: 30rpx;
-   margin-top: 100rpx;
+
  }
 
  .detail-page {
@@ -95,4 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+#myMap{
+ 
 }
