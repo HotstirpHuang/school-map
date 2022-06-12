@@ -3,6 +3,7 @@ var qqmapsdk ;
 const app = getApp();
 const hour = []
 const minute = []
+wx.cloud.init();
 for (let i = 0; i <= 23; i++) {
   hour.push(i)
 }
@@ -18,9 +19,8 @@ Page({
         hidden:true,
         setcheck:0,
         schedule:[],
-        schedulelength:0,
         value:[],
-        schedueindex:0,
+        dataid:"",
         setting:false,
         markers:[],
         testlist:[],
@@ -28,13 +28,13 @@ Page({
         userplace:{},
         addhidden:true,
         wantedplace:{},
-        studydata: [],
-        eatdata:[],
-        lifedata:[],
         hour:hour,
         minute:minute,
         sethour:0,
         setminute:0,
+        studydata: [],
+        eatdata:[],
+        livedata:[],
         dordata:[],
         timer:null,
         //输入的查询地址
@@ -52,11 +52,22 @@ Page({
         customStyle: '',
         show: false
       },
-      onShow:function(){
+onShow:function(){
         var that=this
         var mydate=new Date();
         var myhour=mydate.getHours();
         var myminute=mydate.getMinutes();
+        const db = wx.cloud.database();
+        db.collection('schedule').get({
+          //如果查询成功的话
+          success: res => {
+          console.log(res.data)
+          //这一步很重要，给ne赋值，没有这一步的话，前台就不会显示值
+          that.setData({
+          schedule : res.data
+          })
+        }
+      });
         that.data.timer=setInterval(function(){
         mydate=new Date();
         myhour=mydate.getHours();
@@ -66,21 +77,30 @@ Page({
           sethour:myhour,
           setminute:myminute
         })
-        var temp=[]
         var plan=[]
         var j=-1
-        var len=that.data.schedulelength
+        var temp=[]
+        var delid=""
+        var len=that.data.schedule.length
         for (let i=0;i<len;i++){
         if(that.data.schedule[i].hour==myhour && that.data.schedule[i].minute==myminute){
           j=i;
           plan=that.data.schedule[i]
+          delid=that.data.schedule[i]._id
         }
         else{
           temp.push(that.data.schedule[i])
         }
-        }
+      }
         if(j !=-1){
-          that.setData({schedule:temp,schedulelength:len-1})
+          that.setData({schedule:temp})
+          let db = wx.cloud.database() //设置数据库
+let userCollection = db.collection('schedule') //单引号里为刚刚新建的集合名
+userCollection.doc(delid).remove().then(res => {
+	console.log('删除成功')
+}).catch(err => {
+	console.log('删除失败',err)//失败提示错误信息
+})
           wx.showModal({
             title:'提示',
             content:plan.name+'日程已到，是否导航至该点？',
@@ -144,13 +164,17 @@ Page({
         this.setData({setcheck:val[0]})
       },
       checkconfirm:function(){
-        var l=this.data.schedulelength
+        var l=this.data.schedule.length
         var n=this.data.setcheck
+        var delid=""
         var temp=[]
         var that=this
         for(let i=0;i<l;i++){
           if(i != n){
             temp.push(that.data.schedule[i])
+          }
+          else{
+            delid=that.data.schedule[i]._id
           }
         }
         wx.showModal({
@@ -160,7 +184,15 @@ Page({
           {
             if(res.confirm)
             {
-              that.setData({schedule:temp,schedulelength:l-1,setcheck:0})
+              that.setData({schedule:temp,setcheck:0})
+              console.log(delid)
+              let db = wx.cloud.database() //设置数据库
+let userCollection = db.collection('schedule') //单引号里为刚刚新建的集合名
+userCollection.doc(delid).remove().then(res => {
+	console.log('删除成功')
+}).catch(err => {
+	console.log('删除失败',err)//失败提示错误信息
+})
             }
           }
         })    
@@ -174,46 +206,87 @@ Page({
           {
             if(res.confirm)
             {
-              that.setData({schedule:[],schedulelength:0,setcheck:0})
+              that.setData({schedule:[],setcheck:0})
+              let db = wx.cloud.database() //设置数据库
+let userCollection = db.collection('schedule') //单引号里为刚刚新建的集合名
+userCollection.where({all:null}).remove().then(res => {
+	console.log('删除成功')
+}).catch(err => {
+	console.log('删除失败',err)//失败提示错误信息
+})
             }
           }
         })  
       },
       addconfirm:function(){
-        var index=this.data.schedueindex+1
-        var plan={
-          id:index,
-          name:this.data.markername,
-          marker:this.data.wantedplace,
-          hour:this.data.sethour,
-          minute:this.data.setminute
-          }
-        var temp=this.data.schedule
-        var l=this.data.schedulelength+1
-        temp.push(plan)
-        this.setData({addhidden:true,schedueindex:index,schedule:temp,schedulelength:l})
-      },
+let db = wx.cloud.database() //设置数据库
+let userCollection = db.collection('schedule') //单引号里为刚刚新建的集合名
+userCollection.add({
+	data: {
+    name:this.data.markername,
+    marker:this.data.wantedplace,
+    hour:this.data.sethour,
+    minute:this.data.setminute
+    }
+}).then(res => {
+  console.log('添加成功',res)
+  this.setData({
+		//将增加的值添加到当前页面的变量里
+		dataid: res._id,
+  })
+  var plan={
+    name:this.data.markername,
+    marker:this.data.wantedplace,
+    hour:this.data.sethour,
+    minute:this.data.setminute,
+    _id:this.data.dataid,
+    }
+  var temp=this.data.schedule
+  temp.push(plan)
+          this.setData({addhidden:true,schedule:temp})
+}).catch(err => {
+	console.log('添加失败',err)//失败提示错误信息
+})
+},
       onLoad: function () {
         qqmapsdk = new QQMapWX({
         key: '7XCBZ-JGOWS-BZAOF-6H2UD-MY3Z7-2BBB5'});//A6BBZ-VEX6X-EOA4Y-TDKG6-CHOUK-P2FUQ
+        const db = wx.cloud.database();
         var that = this;
-        var study = that.data.buildData[0].data;
-        var eat = that.data.buildData[1].data;
-        var live = that.data.buildData[2].data;
-        var ador = that.data.buildData[3].data;
-        var placedata=[];
-        var date=new Date;
-        that.setData({
-            studydata:study,
-            eatdata:eat,
-            livedata:live,
-            dordata:ador,
-            placedata:[study,eat,live,ador],
-            value:[date.getHours(),date.getMinutes()],
-            setminute:date.getMinutes(),
-            sethour:date.getHours()
-            
+        db.collection('studyplace').get({
+          //如果查询成功的话
+          success: res => {
+          console.log(res.data)
+          //这一步很重要，给ne赋值，没有这一步的话，前台就不会显示值
+          that.setData({
+          studydata : res.data
+          })
+        }
+      });
+         db.collection('eatplace').get({
+          success: res => {
+          console.log(res.data)
+          that.setData({
+          eatdata : res.data
         })
+      }
+      });
+      db.collection('liveplace').get({
+        success: res => {
+        console.log(res.data)
+        that.setData({
+        livedata : res.data
+        })
+      }
+    });
+      db.collection('dorplace').get({
+      success: res => {
+      console.log(res.data)
+      that.setData({
+      dordata : res.data
+      })
+    }
+  })
         wx.getLocation({
           type:'gcj02',
              success:function(res){
@@ -254,6 +327,17 @@ Page({
         // 使用 wx.createMapContext 获取 map 上下文
         this.mapCtx = wx.createMapContext('myMap');
     },  
+    //设置点聚合
+    initMarkerCluster:function(){
+      this.mapCtx.arkerCluster({
+        enableDefaultStyle:true,
+        zoomOnClick:true,
+        gridSize:20,
+        complete(res){
+          console.log('initMarkerCluster',res)
+        }
+      })
+    },
     studyplace:function(){
         var that=this;
         var result = that.data.studydata;
@@ -393,6 +477,7 @@ Page({
               [index]:{
                 id:i+1,
                 latitude: lat,
+                joinCluster:true,
                 longitude: lon,
                 iconPath: "../../picture/宿舍楼.png",
                 width: 20,
@@ -587,6 +672,7 @@ Page({
                  iconPath: "https://mmbiz.qpic.cn/mmbiz_png/JZxArCU6LRribpVmzlUNGvYVU4jojoICBY1u3ic8lBGbs3sC86DgZy2wwicU5yMtUiagyicNcibu2mP8ibaVyBEysUy5A/0?wx_fmt=png",
                  width: 25,
                  height: 25,
+                 joinCluster:true,
                  label: {
                    content: name,
                    color: '#FFFFFF',
@@ -619,7 +705,7 @@ Page({
      },
      showdetail:function(){
       wx.navigateTo({
-        url: '../library/library',
+        url: '../library/library', 
       })
      },
 

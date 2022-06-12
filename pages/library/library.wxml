@@ -15,11 +15,7 @@
         <view class="weui-article__h3">
                 你见过早上七点图书馆前等待开馆的队伍吗？
         </view>
-        <view class="que-follow" style="width: 669rpx; height: 68rpx; display: block; box-sizing: border-box">
-             <view class="right">
-                    关注
-            </view>
-        </view>
+
      </view>
 </view>
 </view>
@@ -100,6 +96,13 @@
           </view>
 
       </view>
-
+      <view class="weui-footer">
+			<view class="weui-footer__links">
+				<navigator class="weui-footer__link weui-wa-hotarea" url="https://zsb.bupt.edu.cn/">欢迎报考北京邮电大学</navigator>
+			</view>
+			<view class="weui-footer__text">Copyright &copy; 2008-2016 weui.io</view>
+		</view>
   </view>
+
+
 </view>

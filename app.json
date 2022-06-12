@@ -9,8 +9,8 @@
     ],
     "window": {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Weixin",
+        "navigationBarBackgroundColor": "#87CEFA",
+        "navigationBarTitleText": "北邮沙河校园导航",
         "navigationBarTextStyle": "black"
     },
     "plugins": {
