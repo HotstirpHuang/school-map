@@ -3,6 +3,7 @@ var qqmapsdk ;
 const app = getApp();
 const hour = []
 const minute = []
+wx.cloud.init();
 for (let i = 0; i <= 23; i++) {
   hour.push(i)
 }
@@ -28,13 +29,13 @@ Page({
         userplace:{},
         addhidden:true,
         wantedplace:{},
-        studydata: [],
-        eatdata:[],
-        lifedata:[],
         hour:hour,
         minute:minute,
         sethour:0,
         setminute:0,
+        studydata: [],
+        eatdata:[],
+        livedata:[],
         dordata:[],
         timer:null,
         //输入的查询地址
@@ -196,24 +197,42 @@ Page({
       onLoad: function () {
         qqmapsdk = new QQMapWX({
         key: '7XCBZ-JGOWS-BZAOF-6H2UD-MY3Z7-2BBB5'});//A6BBZ-VEX6X-EOA4Y-TDKG6-CHOUK-P2FUQ
+        const db = wx.cloud.database();
         var that = this;
-        var study = that.data.buildData[0].data;
-        var eat = that.data.buildData[1].data;
-        var live = that.data.buildData[2].data;
-        var ador = that.data.buildData[3].data;
-        var placedata=[];
-        var date=new Date;
-        that.setData({
-            studydata:study,
-            eatdata:eat,
-            livedata:live,
-            dordata:ador,
-            placedata:[study,eat,live,ador],
-            value:[date.getHours(),date.getMinutes()],
-            setminute:date.getMinutes(),
-            sethour:date.getHours()
-            
+        db.collection('studyplace').get({
+          //如果查询成功的话
+          success: res => {
+          console.log(res.data)
+          //这一步很重要，给ne赋值，没有这一步的话，前台就不会显示值
+          that.setData({
+          studydata : res.data
+          })
+        }
+      });
+         db.collection('eatplace').get({
+          success: res => {
+          console.log(res.data)
+          that.setData({
+          eatdata : res.data
         })
+      }
+      });
+      db.collection('liveplace').get({
+        success: res => {
+        console.log(res.data)
+        that.setData({
+        livedata : res.data
+        })
+      }
+    });
+      db.collection('dorplace').get({
+      success: res => {
+      console.log(res.data)
+      that.setData({
+      dordata : res.data
+      })
+    }
+  })
         wx.getLocation({
           type:'gcj02',
              success:function(res){
@@ -254,6 +273,17 @@ Page({
         // 使用 wx.createMapContext 获取 map 上下文
         this.mapCtx = wx.createMapContext('myMap');
     },  
+    //设置点聚合
+    initMarkerCluster:function(){
+      this.mapCtx.initMarkerCluster({
+        enableDefaultStyle:true,
+        zoomOnClick:true,
+        gridSize:20,
+        complete(res){
+          console.log('initMarkerCluster',res)
+        }
+      })
+    },
     studyplace:function(){
         var that=this;
         var result = that.data.studydata;
@@ -619,7 +649,7 @@ Page({
      },
      showdetail:function(){
       wx.navigateTo({
-        url: '../library/library',
+        url: '../library/library', 
       })
      },
 

@@ -2,11 +2,11 @@
 <view class="search-framework">
     <view class="search">
         <image src="https://mmbiz.qpic.cn/mmbiz_png/JZxArCU6LRribpVmzlUNGvYVU4jojoICBY1u3ic8lBGbs3sC86DgZy2wwicU5yMtUiagyicNcibu2mP8ibaVyBEysUy5A/0?wx_fmt=png"
-        class="search-image"></image>
+        class="search-image" style="width: 52rpx; height: 50rpx; display: block; box-sizing: border-box"></image>
         <input class="input" placeholder="输入搜索地址" placeholder-style="color:#B0C4DE;" bindinput="inputplace" />
         <view class="line"></view>
         <view class="marker-searcher" bindtap="search_marker">
-        <button class="search-text" bindtap="search_place" style="width: 184rpx; height: 80rpx; display: block; box-sizing: border-box; left: 5rpx; top: 11rpx; position: relative">搜索</button>
+        <view class="search-text" bindtap="search_place" style="width: 139rpx; height: 68rpx; display: block; box-sizing: border-box; left: -17rpx; top: 12rpx; position: relative">搜索</view>
         </view>
     </view>
 </view>
@@ -42,7 +42,7 @@ scale="16.5"
 show-compass="true"
 enable-rotate="true"
 enable-building="true"
-enable-poi="{{true}}"
+enable-poi="{{false}}"
 rotate="20"
 bindmarkertap="onPointTap"
 bindlabeltap="onPointTap"
