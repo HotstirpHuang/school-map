@@ -50,6 +50,8 @@ Page({
         position: 'right',
         overlay: true,
         customStyle: '',
+        choosehour:0,
+        chooseminute:0,
         show: false
       },
 onShow:function(){
@@ -136,8 +138,12 @@ userCollection.doc(delid).remove().then(res => {
         console('stop')
       },
       addschedule:function(){
+        let hour=this.data.sethour
+        let minute=this.data.setminute
         this.setData({
-          addhidden:false
+          addhidden:false,
+          choosehour:hour,
+          chooseminute:minute
         })
       },
       checkschedule:function(){
@@ -155,8 +161,8 @@ userCollection.doc(delid).remove().then(res => {
       bindChange: function (e) {
         const val = e.detail.value
         this.setData({
-          sethour: this.data.hour[val[0]],
-          setminute: this.data.minute[val[1]],
+          choosehour: this.data.hour[val[0]],
+          chooseminute: this.data.minute[val[1]],
         })
       },
       checkchange:function(e){
@@ -219,35 +225,35 @@ userCollection.where({all:null}).remove().then(res => {
         })  
       },
       addconfirm:function(){
-let db = wx.cloud.database() //设置数据库
-let userCollection = db.collection('schedule') //单引号里为刚刚新建的集合名
-userCollection.add({
-	data: {
-    name:this.data.markername,
-    marker:this.data.wantedplace,
-    hour:this.data.sethour,
-    minute:this.data.setminute
-    }
-}).then(res => {
-  console.log('添加成功',res)
-  this.setData({
-		//将增加的值添加到当前页面的变量里
-		dataid: res._id,
-  })
-  var plan={
-    name:this.data.markername,
-    marker:this.data.wantedplace,
-    hour:this.data.sethour,
-    minute:this.data.setminute,
-    _id:this.data.dataid,
-    }
-  var temp=this.data.schedule
-  temp.push(plan)
-          this.setData({addhidden:true,schedule:temp})
-}).catch(err => {
-	console.log('添加失败',err)//失败提示错误信息
-})
-},
+        let db = wx.cloud.database() //设置数据库
+        let userCollection = db.collection('schedule') //单引号里为刚刚新建的集合名
+        userCollection.add({
+          data: {
+            name:this.data.markername,
+            marker:this.data.wantedplace,
+            hour:this.data.choosehour,
+            minute:this.data.chooseminute
+            }
+        }).then(res => {
+          console.log('添加成功',res)
+          this.setData({
+            //将增加的值添加到当前页面的变量里
+            dataid: res._id,
+          })
+          var plan={
+            name:this.data.markername,
+            marker:this.data.wantedplace,
+            hour:this.data.choosehour,
+            minute:this.data.chooseminute,
+            _id:this.data.dataid,
+            }
+          var temp=this.data.schedule
+          temp.push(plan)
+                  this.setData({addhidden:true,schedule:temp})
+        }).catch(err => {
+          console.log('添加失败',err)//失败提示错误信息
+        })
+        },
       onLoad: function () {
         qqmapsdk = new QQMapWX({
         key: '7XCBZ-JGOWS-BZAOF-6H2UD-MY3Z7-2BBB5'});//A6BBZ-VEX6X-EOA4Y-TDKG6-CHOUK-P2FUQ
