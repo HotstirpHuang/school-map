@@ -1,13 +1,11 @@
 <!--pages/demo01/demo01.wxml-->
 <view class="search-framework">
     <view class="search">
-        <image src="https://pic.imgdb.cn/item/6289d20e0947543129e41f21.png"
+        <image src="https://mmbiz.qpic.cn/mmbiz_png/JZxArCU6LRribpVmzlUNGvYVU4jojoICBY1u3ic8lBGbs3sC86DgZy2wwicU5yMtUiagyicNcibu2mP8ibaVyBEysUy5A/0?wx_fmt=png"
         class="search-image" style="width: 48rpx; height: 50rpx; display: block; box-sizing: border-box"></image>
-        <input class="input" placeholder="输入搜索地址" placeholder-style="color:#B0C4DE;" bindinput="inputplace" />
+        <input class="input" placeholder="输入校内搜索地址" placeholder-style="color:#B0C4DE;" bindinput="inputplace_inside" />
         <view class="line"></view>
-        <view class="marker-searcher" bindtap="search_marker">
-        <view class="search-text" bindtap="search_place" style="width: 128rpx; height: 58rpx; display: block; box-sizing: border-box; left: -15rpx; top: 10rpx; position: relative">搜索</view>
-        </view>
+        <view class="search-text" bindtap="searchplace" style="width: 128rpx; height: 58rpx; display: block; box-sizing: border-box; left: -15rpx; top: 10rpx; position: relative">搜索</view>
     </view>
 </view>
 <view class="index_mark">
@@ -35,7 +33,7 @@
 </view>
 <map 
 id="myMap"
-style="width: 750rpx; height: 930rpx; display: block; box-sizing: border-box; left: 0rpx; top: 0rpx"
+style="width: 750rpx; height: 910rpx; display: block; box-sizing: border-box; left: 1rpx; top: 22rpx; position: relative"
 markers="{{markers}}"
 data-markers="{{markers}}"
 scale="16.5"
@@ -52,9 +50,11 @@ longitude="116.288838"
 layer-style="2"
 >
 </map>
-<cover-view class="coverview">
-    <button class="schedule" style="width:40px" bindtap="checkschedule">日程表</button>
+<cover-view class="coverview" style="position: absolute; left: 0rpx; top: 274rpx; width: 100rpx; height: 198rpx; display: block; box-sizing: border-box">
+    <button class="schedule" style="width: 40px; position: relative; left: 6rpx; top: 2rpx" bindtap="checkschedule">日程表</button>
+    <button class="schedule" style="width: 40px; position: relative; left: 6rpx; top: 2rpx" bindtap="checkschedule1">周边搜索</button>
 </cover-view>
+
 <modal class="popup" hidden="{{hidden}}" confirm-text="前往此处" cancel-text="取消" bindconfirm="popconfirm" bindcancel="popcancel" title="{{markername}}" style="width:80%">
   <view class="marker-img">
     <image style="width:565rpx;height:300rpx" src="{{markerimg}}"></image>
@@ -81,6 +81,9 @@ layer-style="2"
   <button class="marker-button" bindtap="clearall" style="width: 50%;height:80rpx;">清空日程表</button>
 </modal>
 
+<modal class="popup" hidden="{{checkhidden1}}" confirm-text="搜索" cancel-text="关闭" bindconfirm="search_place" bindcancel="checkcancel1" title="学校周边搜索" style="width:80%">
+        <input class="input" placeholder="输入搜索地址" placeholder-style="color:#B0C4DE;" bindinput="inputplace" />
+</modal>
 <page-container 
   show="{{show}}"
   round="{{round}}"

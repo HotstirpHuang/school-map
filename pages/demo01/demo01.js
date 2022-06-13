@@ -25,6 +25,7 @@ Page({
         markers:[],
         testlist:[],
         checkhidden:true,
+        checkhidden1:true,
         userplace:{},
         addhidden:true,
         wantedplace:{},
@@ -52,7 +53,9 @@ Page({
         customStyle: '',
         choosehour:0,
         chooseminute:0,
-        show: false
+        show: false,
+        insidevalue:'',
+        inputvalue1:''
       },
 onShow:function(){
         var that=this
@@ -143,11 +146,18 @@ userCollection.doc(delid).remove().then(res => {
         this.setData({
           addhidden:false,
           choosehour:hour,
-          chooseminute:minute
+          chooseminute:minute,
+          value:[hour,minute],
         })
       },
       checkschedule:function(){
         this.setData({checkhidden:false})
+      },
+      checkschedule1:function(){
+        this.setData({checkhidden1:false})
+      },
+      checkcancel1:function(){
+        this.setData({checkhidden1:true})
       },
       addcancel:function(){
         this.setData({
@@ -642,7 +652,6 @@ userCollection.where({all:null}).remove().then(res => {
       this.setData({
         inputvalue:e.detail.value
       })
-      
      },
      search_place:function(){
        var that = this;
@@ -714,6 +723,64 @@ userCollection.where({all:null}).remove().then(res => {
         url: '../library/library', 
       })
      },
+     inputplace_inside:function(e){
+      let insidevalue = e.detail.value
+      console.log(insidevalue)
+      this.setData({
+        inputvalue1:insidevalue
+      })
+     },
+     searchplace:function(e){
+      const db = wx.cloud.database();
+      var that = this;
+      var text = that.data.inputvalue1;
+      db.collection('map').where({
+        name:text
+      }).get({
+        success: res => {
+          console.log(res.data)
+          var number = that.data.markers.length;
+          let markers = that.data.markers;
+          markers.splice(1,number-1)
+            that.setData({
+              markers:markers
+            })
+
+            for (var i = 0; i < res.data.length; i++) {
+              let lat = res.data[i].latitude;
+              let lon = res.data[i].longitude;
+              let name = res.data[i].name;
+              var index = "markers["+(i+1)+"]";
+              that.setData({
+                [index]:{
+                 id:i+1,
+                 latitude: lat,
+                 longitude: lon,
+                 iconPath: "https://pic.rmb.bdstatic.com/bjh/053cc2639bf694a5be5a85fbc2c1c9db.png",
+                 width: 25,
+                 height: 25,
+                 joinCluster:true,
+                 label: {
+                   content: name,
+                   color: '#FFFFFF',
+                   bgColor:'#6495ED',
+                   fontSize: 13,
+                   anchorX:14,
+                   anchorY:-24,
+                   borderRadius: 5,
+                   borderWidth: 1,
+                   borderColor: '#6495ED',
+                   padding: 2,
+                   //display: 'ALWAYS'
+                 }
+                },
+                currentdatabase:res.data
+              })
+            }
+          }
+         })
+     },
+
 
      
 })
